@@ -12,7 +12,7 @@ More info will be added later!
 
 1.  OU start theme is not meant to be used as a base theme. Instead, rename and edit it directly. Any upgrades will **not** be backwards compatible.
 2.  Edit the directory name to your choosing.
-3.  Edit the _OU2014.info_ filename to _&lt;name&gt;.info_.
+3.  Edit the _OU_D7theme.info_ filename to _&lt;name&gt;.info_.
 4.  Modify the contents of your _&lt;name&gt;.info_ file to suit its new name.
 5.  Change all function names in the _template_*.php_ files to your new theme name.
 6.  Delete this _README.md_ file.
