@@ -1,0 +1,29 @@
+/*
+###############################################################################
+##
+## @file:         _structure.scss
+## @description:  Defines the page structure for the website
+##
+###############################################################################
+*/
+
+.wrapper                    { position: relative; width: 95%; @include x-rem(max-width, 100); margin: 0 auto; /* overflow: hidden; */
+  @include bp($desktop)       { width: 90%; }
+}
+
+/* header */
+.header                     { /* position: fixed; top: 0; left: 0; */ z-index: 200; width: 100%; padding: 20px 0; text-align: left;
+  .wrapper                    { /* overflow: visible; */
+    &:after                    { clear: both; content: "."; display: block; height: 0; line-height: 0; visibility: hidden; }
+  }
+}
+
+/* content */
+.container                  { position: relative; text-align: left; overflow: hidden;
+  .body                       { width: 100%; position: relative; }
+  .sidebar-aside & .body      { width: 66.666666%; float: right; }
+  .aside                      { width: 33.333333%; float: left; }
+}
+
+/* footer */
+.footer                     { position: relative; clear: both; margin-top: 5em; padding: 2em 0; }

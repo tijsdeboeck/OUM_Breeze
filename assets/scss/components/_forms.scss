@@ -1,0 +1,255 @@
+/*
+###############################################################################
+##
+## @file:         _forms.less
+## @description:  Defines the form styling for the site
+##
+###############################################################################
+*/
+
+/**
+ * general elements
+ * ------------------------------------------------------------------------- */
+.form-item,
+.form-actions           { margin: 0 0 1.5em; }
+.form-item .form-item   { margin-bottom: 0; }
+
+.description            { margin-top: .5em; color: lighten($color-default, 25%); font-size: 80%; }
+
+.resizable-textarea .grippie  { background-image: url(/misc/grippie.png); }
+
+
+/**
+ * Fieldsets
+ * ------------------------------------------------------------------------- */
+fieldset                { padding: 1.5em; margin-bottom: 1.5em; border: 1px solid $color-lightgrey; }
+legend                  { font-size: 1em; padding: 0 1em; font-weight: bold; }
+
+fieldset.collapsible    { position: relative; }
+html.js fieldset        {
+  &.collapsible           {
+    .fieldset-wrapper       { overflow: visible; }
+    .fieldset-legend        { line-height: 1.5em; }
+    .fieldset-legend a      { @include inline-block; }
+    .fieldset-legend:before { @include inline-block; margin-right: .5em; content: "\25bc"; font-size: 10px; color: lighten($color-default, 25%); }
+  }
+
+  &.collapsed             { height: 1em; border-bottom-width: 0; border-left-width: 0; border-right-width: 0;
+    .fieldset-wrapper       { display: none; }
+    .fieldset-legend:before { content: "\25b6"; }
+  }
+}
+
+
+/**
+ * form elements
+ * ------------------------------------------------------------------------- */
+form                    { margin-bottom: 1.5em; }
+
+label                   { display: block; margin-bottom: .5em; font-size: 1em; font-weight: 700; cursor: not-allowed; }
+// Checkbox & radio labels should be inline with their inputs
+input[type="checkbox"] + label,
+input[type="radio"] + label { @include inline-block; margin: 0 0 0 .5em; line-height: 1.5em; vertical-align: middle; font-weight: 400; }
+
+/* inputs */
+input,
+select,
+textarea                { position: relative; @include inline-block; width: 100%; height: 2.5em; padding: 0 .75em; border: 1px solid $color-lightgrey; background-color: $color-white; color: $color-default; font-family: inherit; font-size: 1em; @include border-radius(0); @include transition(border-color ease-in-out .15s, box-shadow ease-in-out .15s);
+  &:hover                 { border-color: $color-default; }
+  &:focus                 { border-color: $color-highlight; box-shadow: 0 0 6px rgba($color-highlight, .5); outline: none; }
+
+  &[disabled],
+  &[readonly]             { background-color: lighten($color-lightgrey, 12%); color: lighten($color-default, 50%); cursor: not-allowed; }
+
+  @include placeholder    { color: $color-lightgrey; }
+}
+
+input                   { line-height: normal;
+  // Reset to original size
+  &[type="checkbox"],
+  &[type="file"],
+  &[type="image"],
+  &[type="radio"]         { height: auto; width: auto; }
+
+  &[type="checkbox"],
+  &[type="radio"]         { line-height: normal; padding: 0; vertical-align: middle; }
+
+  // File upload
+  &[type="file"]          { border: none; line-height: 100%; padding: 0; min-height: 2.5em; }
+
+  // Range
+  &[type="range"]         { border: none; padding: 0; width: 100%; -webkit-appearance: none;
+    &:focus                 { outline: none; }
+    &::-webkit-slider-runnable-track  { height: 5px; background-color: lighten($color-default, 25%); border: none; border-radius: 3px; }
+    &::-webkit-slider-thumb           { width: 16px; height: 16px; margin-top: -5px; border: none; border-radius: 50%; background-color: $color-default; -webkit-appearance: none; }
+    &::-moz-range-track               { height: 5px; background-color: lighten($color-default, 25%); border: none; border-radius: 3px; }
+    &::-moz-range-thumb               { width: 16px; height: 16px; margin-top: -5px; border: none; border-radius: 50%; background-color: $color-default; }
+    &::-ms-track                      { height: 5px; background-color: lighten($color-default, 25%); border: none; border-radius: 3px; color: transparent; }
+    &::-ms-thumb                      { width: 16px; height: 16px; margin-top: -5px; border: none; border-radius: 50%; background-color: $color-default; }
+  }
+
+  // Remove focus styles
+  &[type="checkbox"],
+  &[type="radio"],
+  &[type="range"],
+  &[type="file"],
+  &[type="color"],
+  &[type="submit"],
+  &[type="button"],
+  &[type="reset"]         {
+    &:focus                 { border-color: transparent; box-shadow: none; outline: none; }
+  }
+}
+
+textarea                { height: auto; padding: 1em; resize: vertical; }
+
+select                  { padding: 0 .5em;
+  &[multiple]             { height: auto; }
+  &::-ms-expand           { display: none; }
+  &::-ms-value            { color: currentColor; }
+  option                  { padding: .5em; background-color: $color-white; color: $color-default; border: 0 none; }
+}
+
+/* date inputs */
+.form-item-date         {
+  .form-item              { @include inline-block; }
+  input, select           { width: auto; }
+}
+
+
+/**
+ * buttons
+ * ------------------------------------------------------------------------- */
+input[type="submit"],
+input[type="button"],
+input[type="reset"],
+button,
+.button                 { width: auto; margin: 1.5em 0.5em 0 0; vertical-align: middle; font-weight: 700; text-align: center; white-space: nowrap; touch-action: manipulation; cursor: pointer; background-image: none; @include user-select(none);
+  &:hover,
+  &:focus,
+  &.active                { background-color: rgba($color-lightgrey, .50); color: $color-default; text-decoration: none; }
+
+  &:active,
+  &.active                { outline: 0; background-image: none; box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125); }
+
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] &    { @include opacity(.65); box-shadow: none; background-color: transparent; }
+
+  // alternate buttons
+  &.primary               { background-color: $color-highlight; border-color: $color-highlight; color: $color-white;
+    &:hover,
+    &:focus,
+    &.active                { background-color: rgba($color-highlight, .80); }
+  }
+  &.success               { background-color: $color-success; border-color: $color-success; color: $color-white;
+    &:hover,
+    &:focus,
+    &.active                { background-color: rgba($color-success, .80); }
+  }
+  &.warning               { background-color: $color-warning; border-color: $color-warning; color: $color-white;
+    &:hover,
+    &:focus,
+    &.active                { background-color: rgba($color-warning, .80); }
+  }
+  &.alert                 { background-color: $color-error; border-color: $color-error; color: $color-white;
+    &:hover,
+    &:focus,
+    &.active                { background-color: rgba($color-error, .80); }
+  }
+}
+// file upload submit button
+input[type="file"] + input[type="submit"] { margin: 0; }
+
+// bring form action links in line with the buttons
+.form-actions > a       { @include inline-block; width: auto; height: 2.5em; margin: 1.5em 0.5em 0 0; padding: 0 .75em; line-height: 2.5em; border: 1px solid $color-lightgrey; vertical-align: middle; font-weight: 700; font-family: inherit; font-size: 1em; text-align: center; text-decoration: none; white-space: nowrap; touch-action: manipulation; cursor: pointer; color: $color-default; @include user-select(none); @include transition(border-color ease-in-out .15s, box-shadow ease-in-out .15s);
+  &:hover,
+  &:focus,
+  &.active                { background-color: rgba($color-lightgrey, .50); color: $color-default; text-decoration: none; }
+}
+
+
+/**
+ * validation
+ * ------------------------------------------------------------------------- */
+input,
+select,
+textarea                {
+  &.valid                 { border-color: $color-success; }
+  &.valid:focus           { border-color: $color-success; box-shadow: 0 0 10px rgba($color-success, .5); }
+
+  &.error                 { border-color: $color-error; }
+  &.error:focus           { border-color: $color-error; box-shadow: 0 0 10px rgba($color-error, .5); }
+
+  // Remove focus styles
+  &[type="checkbox"],
+  &[type="radio"],
+  &[type="range"],
+  &[type="file"],
+  &[type="color"]         {
+    &:focus                 { border-color: transparent; box-shadow: none; outline: none; }
+  }
+}
+.form-required          { color: $color-highlight; font-weight: 400; }
+
+/* validation message */
+label.error,
+span.error              { padding: 0.5em; background-color: $color-error; border: 1px solid $color-error; color: $color-white; font-weight: 400;
+  &:before                { content: "\2716"; color: $color-white; padding-right: .5em; }
+}
+
+
+/**
+ * Passwords
+ * ------------------------------------------------------------------------- */
+.form-type-password     { max-width: 50em; }
+
+div.password-confirm,
+.password-strength      { font-size: 80%; color: lighten($color-default, 25%); margin-bottom: 1em; }
+
+.password-strength-title{ display: inline; }
+.password-strength-text { float: right; font-weight: bold; }
+.password-indicator     { width: 100%; height: 5px; overflow: hidden; background-color: $color-lightgrey; border-radius: 2px; box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+  .indicator              { width: 0; height: 100%; font-size: 12px; background-color: $color-success; @include transition(width .6s ease); }
+}
+
+.password-confirm .ok,
+.password-confirm .error{ display: inline; padding: 0 .35em; background-color: $color-success; border: 0 none; color: $color-white;
+  &:before                { content: ""; padding: 0; }
+}
+.password-confirm .error{ background-color: $color-error; }
+
+.password-suggestions   { margin: 0; }
+
+/* move pw-stength & pw-confirm below the input field on small screens */
+.form-type-password     { display: table; width: 100%;
+  .form-item &            { margin-bottom: 1.5em; }
+  input[type="password"]  { margin-bottom: .5em; }
+}
+.password-strength,
+div.password-confirm    { display: table-footer-group; }
+div.password-confirm    { visibility: hidden; }
+
+@include bp($mobile_wide) {
+  .form-type-password     { margin-bottom: 0;
+    > label,
+    > input                 { width: 47.5%; }
+    input[type="password"]  { margin-bottom: 0; }
+  }
+  .password-strength,
+  div.password-confirm    { display: block; width: 47.5%; float: right; margin-top: 2em; margin-bottom: 0; }
+}
+
+
+/**
+ * Webforms specific styling
+ * ------------------------------------------------------------------------- */
+.webform-container-inline {
+  > label                 { @include inline-block; width: 30%; padding-right: 1em; }
+  > input                 { width: 70%; }
+}
+
+
+/**
+ * custom styling
+ * ------------------------------------------------------------------------- */

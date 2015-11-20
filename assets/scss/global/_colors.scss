@@ -1,0 +1,37 @@
+/*
+###############################################################################
+##
+## @file:         _colors.scss
+## @description:  Defines the colors for the website
+##
+###############################################################################
+*/
+
+/**
+ *  default color definitions - only change values, do not rename!
+ * ------------------------------------------------------------------------- */
+$color-default: #000;
+$color-highlight: #126688;
+
+$color-white: #fff;
+$color-black: #000;
+$color-lightgrey: #ddd; /* used for borders, hr, fields, etc */
+
+$color-link: #006699;
+$color-link-hover: #555;
+
+$color-bg-default: #fff;
+
+/* selection colors */
+$color-selected-text: invert($color-default);
+$color-selected-text-bg: $color-default;
+
+/* status & validation */
+$color-status: #8ed9f6;
+$color-success: #36c14d;
+$color-warning: #ffbf00;
+$color-error: #c43838;
+
+/**
+ * custom color definitions
+ * ------------------------------------------------------------------------- */
