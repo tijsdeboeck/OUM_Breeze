@@ -1,0 +1,32 @@
+{
+  "parseFiles": true,
+  "customTests": [],
+  "devFile": "/PATH/TO/modernizr-dev.js",
+  "outputFile": "/PATH/TO/modernizr-output.js",
+  "tests": [
+    "hashchange",
+    "input",
+    "svg",
+    "css/animations",
+    "css/backgroundsize",
+    "css/boxsizing",
+    "css/flexbox",
+    "css/fontface",
+    "css/generatedcontent",
+    "css/gradients",
+    "css/mediaqueries",
+    "css/multiplebgs",
+    "css/transforms",
+    "css/transforms3d",
+    "css/transitions",
+    "script/async",
+    "svg/asimg",
+    "svg/inline"
+  ],
+  "extensibility": [
+    "mq",
+    "html5shiv",
+    "setClasses"
+  ],
+  "uglify": true
+}
