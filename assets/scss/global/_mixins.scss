@@ -171,3 +171,52 @@
   }
 
 }
+
+
+/**
+ * default icon style mixin
+ *
+ * Usage:
+ * div { @include icon($icon-name); }
+ * ------------------------------------------------------------------------- */
+@mixin x-webfont-icon {
+  // general settings
+  font-family: 'icons';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  text-indent: 0;
+
+  /* Better Font Rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+/**
+ * font sizes
+ *
+ * Usage:
+ * p { @include font-sizes($font-size-map); }
+ * ------------------------------------------------------------------------- */
+@mixin x-font-sizes ($fs-map, $fs-breakpoints: $breakpoints) {
+  @each $fs-map-item in $fs-map {
+
+    $fs-breakpoint: nth($fs-map-item, 1);
+    $fs-font-size: nth($fs-map-item, 2);
+
+    @if $fs-breakpoint == default {
+      @include x-rem(font-size, $fs-font-size);
+    }
+    @else {
+      // If $fs-font-size is a key that exists in
+      // $fs-breakpoints, use the value
+      @media screen and (min-width: $fs-breakpoint) {
+        @include x-rem(font-size, $fs-font-size);
+      }
+    }
+  }
+}
