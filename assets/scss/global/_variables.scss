@@ -30,3 +30,14 @@ $wide:          1280px;
 
 // Switch from mobile to desktop nav
 $nav-switch: $tablet_narrow;
+
+
+/**
+ * Font sizes
+ * ------------------------------------------------------------------------- */
+$base-font-size: 16px;
+
+$default-font-sizes: (
+  default 0.875,
+  $desktop 1
+);
