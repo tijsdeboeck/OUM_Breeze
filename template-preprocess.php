@@ -20,7 +20,7 @@ function OUM_Breeze_preprocess_html(&$variables) {
   $selectivizr = array(
     '#tag' => 'script',
     '#attributes' => array(
-      'src' => $theme_path . '/assets/js/vendor/selectivizr/selectivizr.1.0.3b.min.js',
+      'src' => '/' . $theme_path . '/assets/js/vendor/selectivizr/selectivizr.1.0.3b.min.js',
     ),
     '#prefix' => '<!--[if (gte IE 6)&(lte IE 8)]>',
     '#suffix' => '</script><![endif]-->',

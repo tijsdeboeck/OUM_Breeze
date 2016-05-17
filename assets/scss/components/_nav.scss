@@ -61,7 +61,7 @@ ul.tabs                 { display: block; margin: 1.5em 0; border-radius: 4px; t
   /* toggler for subnavs */
   .subnav-toggle                      { position: absolute; right: 0; top: 0; display: block; height: 100%; width: 40px; background-color: lighten($color-default, 80%);
     &:before                            { content:'\002B'; position: absolute; right: 0; top: 0; height: 100%; width: 100%; line-height: 40px; color: $color-white; font-weight: 400; font-size: 25px; text-align: center; cursor: pointer; }
-    &.active:before                     { content:'\2013'; }
+    &.toggle-active:before              { content:'\2013'; }
   }
   li li .subnav-toggle                { background-color: lighten($color-default, 70%); }
   li li li .subnav-toggle             { background-color: lighten($color-default, 60%); }
